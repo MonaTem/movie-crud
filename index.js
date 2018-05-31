@@ -3,12 +3,12 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const cors = require('cors');
-const movieRoutes = require('./routes/movies');
+const moviesRoutes = require('./routes/movies');
 
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(express.bodyParser({ extended: true }));
+// app.use(express.bodyParser({ extended: true }));
 
 app.get('/', (request, response) => {
   response.send('movie-crud: Slash route is on fleeq');
