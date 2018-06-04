@@ -18,6 +18,12 @@ const create = (request, response) => {
     .catch( error => { console.error( error ); });
 }
 
+const update = (request, response) => {
+  movieModel.update(request.params.id, request.body)
+    .then( result => { response.send( result ); })
+    .catch( error => { console.error( error ); });
+}
+
 const destroy = (request, response) => {
   movieModel.destroy(request.params.id)
     .then( result => { response.send( result ); })
@@ -28,5 +34,6 @@ module.exports = {
   index,
   show,
   create,
+  update,
   destroy
 }

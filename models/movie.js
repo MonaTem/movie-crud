@@ -31,6 +31,14 @@ const create = data =>
     .then( rows => rows[0] )
     .catch( error => { console.error( error ); });
 
+const update = ( id, data ) =>
+  knex('movies')
+    .returning('*')
+    .where('id', id)
+    .update({ ...data, updated_at: knex.fn.now() })
+    .then( rows => rows[0] )
+    .catch( error => { console.error( error ); });
+
 const destroy = id =>
   knex('movies')
     .returning('*')
@@ -43,5 +51,6 @@ module.exports = {
   index,
   show,
   create,
+  update,
   destroy
 }
